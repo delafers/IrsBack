@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect, useState} from "react";
+import axios from "axios"
+import {BrowserRouter, Route, Router, Routes} from 'react-router-dom'
+import Header from "./Components/Header/Header";
+import NavBar from "./Components/NavBar/NavBar";
+import Main from "./Components/Main/Main";
+import SignupForm from './Components/Login/Secret';
+import Register from './Components/Login/Register';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isAuth, setAuth] = useState(false)
+    return (
+        <>
+        <BrowserRouter>
+            <Header/>
+            {!isAuth ?
+                    <div className="errAuth">
+                        Some Content is disabled. Please auth
+                    </div> : <></>
+            }
+            
+           
+            <div className="App">
+                <NavBar />
+                <Routes>
+                    <Route  exact={true} path={"/"}
+                     element={<Main isAuth={isAuth} setAuth={setAuth}/>} />
+                    <Route path='/regs' element={<Register />}/>
+                    <Route path='/register' element={<SignupForm setAuth={setAuth} />}/>
+                </Routes>
+                
+            </div>
+            </BrowserRouter>
+        </>
+    );
 }
 
 export default App;

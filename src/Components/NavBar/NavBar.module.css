@@ -1,0 +1,10 @@
+.nav{
+    display: flex;
+    flex-direction: column;
+    border-right: orangered solid 4px;
+}
+
+.nav a{
+    text-decoration: none;
+    color: brown;
+}

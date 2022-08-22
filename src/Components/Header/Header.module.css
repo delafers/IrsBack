@@ -1,0 +1,13 @@
+.head{
+    height: 44px;
+    background-color: darkslateblue;
+    width: 100%;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10vw;
+    padding-left: 10vw;
+    align-items: center;
+    height: 44px;
+}
